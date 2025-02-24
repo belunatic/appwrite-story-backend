@@ -15,9 +15,16 @@ export function UserProvider(props) {
 	const [errorInfo, setErrorInfo] = useState("");
 
 	async function login(email, password) {
-		const loggedIn = await account.createEmailPasswordSession(email, password);
-		setUser(loggedIn);
-		window.location.replace("/");
+		try {
+			const loggedIn = await account.createEmailPasswordSession(
+				email,
+				password
+			);
+			setUser(loggedIn);
+			window.location.replace("/");
+		} catch (err) {
+			setErrorInfo(err.message);
+		}
 	}
 
 	async function logout() {
@@ -26,8 +33,12 @@ export function UserProvider(props) {
 	}
 
 	async function register(email, password) {
-		await account.create(ID.unique(), email, password);
-		await login(email, password);
+		try {
+			await account.create(ID.unique(), email, password);
+			await login(email, password);
+		} catch (err) {
+			setErrorInfo(err.message);
+		}
 	}
 
 	async function init() {
@@ -44,7 +55,8 @@ export function UserProvider(props) {
 	}, []);
 
 	return (
-		<UserContext.Provider value={{ current: user, login, logout, register }}>
+		<UserContext.Provider
+			value={{ current: user, login, logout, register, errorInfo }}>
 			{props.children}
 		</UserContext.Provider>
 	);

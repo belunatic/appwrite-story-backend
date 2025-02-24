@@ -7,11 +7,11 @@ const Navbar = () => {
 	return (
 		<div>
 			<nav>
-				<Link to="/">Idea tracker</Link>
 				<div>
 					{user.current ? (
 						<>
 							<span>{user.current.email}</span>
+							<Link to="/">Home</Link>
 							<button type="button" onClick={() => user.logout()}>
 								Logout
 							</button>

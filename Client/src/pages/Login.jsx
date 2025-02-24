@@ -10,6 +10,7 @@ export function Login() {
 	return (
 		<section>
 			<h1>Login or register</h1>
+			<p>{user.errorInfo}</p>
 			<form>
 				<input
 					type="email"
