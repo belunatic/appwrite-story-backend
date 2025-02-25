@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../lib/context/user";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
 	const user = useUser();
+	const navigate = useNavigate();
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	useEffect(() => {
+		console.log(user.current);
+		if (user.current) {
+			navigate("/");
+		}
+	}, [user.current]);
 
 	return (
 		<section>
