@@ -14,4 +14,10 @@ module.exports = {
 		// console.log("Documents:", documents);
 		res.json(documents);
 	},
+	getAStory: async (req, res) => {
+		const { id } = req.params;
+		console.log("this is the id", id);
+		const story = await stories.getDocument(id);
+		res.json(story);
+	},
 };

@@ -1,6 +1,7 @@
 const { databases, users } = require("../config/appwrite");
 
-//controller the logic of the database
+// The logic of the database data retrieval is moved to the model
+// The controller will call the model to get the data
 module.exports = {
 	getAllDocument: async () => {
 		try {
@@ -20,6 +21,30 @@ module.exports = {
 			return result;
 		} catch (error) {
 			console.error("Error fetching user:", error);
+		}
+	},
+	getDocument: async (documentId) => {
+		try {
+			const result = await databases.getDocument(
+				process.env.VITE_DATABASE_ID,
+				process.env.VITE_COLLECTION_ID,
+				documentId
+			);
+			return result;
+		} catch (error) {
+			console.error("Error fetching document:", error);
+		}
+	},
+	createDocument: async (data) => {
+		try {
+			const result = await databases.createDocument(
+				process.env.VITE_DATABASE_ID,
+				process.env.VITE_COLLECTION_ID,
+				data
+			);
+			return result;
+		} catch (error) {
+			console.error("Error creating document:", error);
 		}
 	},
 };
