@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../lib/context/user";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // We'll complete this component later
 export function Home() {
@@ -43,10 +43,13 @@ export function Home() {
 				<p>Loading...</p>
 			) : (
 				data.map((item) => (
-					<div key={item.id}>
+					<div key={item.$id}>
 						<h2>{item.title}</h2>
 						<p>{item.body}</p>
 						<span>- {item.author}</span>
+						<button>
+							<Link to={`/story/${item.$id}`}>Read more</Link>
+						</button>
 					</div>
 				))
 			)}

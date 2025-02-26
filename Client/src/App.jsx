@@ -1,5 +1,6 @@
-import { Login } from "./pages/Login";
-import { Home } from "./pages/Home";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Story from "./pages/Story";
 import { UserProvider } from "./lib/context/user";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -16,6 +17,7 @@ function App() {
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="/login" element={<Login />} />
+							<Route path="/story" element={<Story />} />
 						</Routes>
 					</div>
 				</Router>
