@@ -36,17 +36,6 @@ export function Home() {
 		}
 	};
 
-	// const displayData = () => {
-	//     return ({
-	//         data.map((item) => (
-	//             <div key={item.id}>
-	//                 <h2>{item.title}</h2>
-	//                 <p>{item.description}</p>
-	//             </div>
-	//         ))
-	//     });
-	// };
-
 	return (
 		<>
 			<h1>Home</h1>
@@ -56,7 +45,8 @@ export function Home() {
 				data.map((item) => (
 					<div key={item.id}>
 						<h2>{item.title}</h2>
-						<p>{item.description}</p>
+						<p>{item.body}</p>
+						<span>- {item.author}</span>
 					</div>
 				))
 			)}
