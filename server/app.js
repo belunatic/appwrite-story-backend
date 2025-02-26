@@ -5,14 +5,18 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(cors());
+
 const client = new sdk.Client();
 
 client
 	.setEndpoint("https://cloud.appwrite.io/v1")
 	.setProject(process.env.VITE_PROJECT_ID)
-	.setKey(process.env.VITE_API_KEY);
+	.setKey(process.env.VITE_APP_API_KEY);
 
 const databases = new sdk.Databases(client);
+const users = new sdk.Users(client);
+const account = new sdk.Account(client);
 
 const getDocument = async () => {
 	try {
@@ -26,7 +30,19 @@ const getDocument = async () => {
 	}
 };
 
+const getUser = async () => {
+	try {
+		console.log("Fetching users...");
+		const result = await users.list();
+		console.log("Users fetched:", result);
+		return result;
+	} catch (error) {
+		console.error("Error fetching user:", error);
+	}
+};
+
 app.get("/", async (req, res) => {
+	console.log(await getUser());
 	let docs = await getDocument();
 	res.json(docs);
 });
