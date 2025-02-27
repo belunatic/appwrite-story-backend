@@ -16,8 +16,17 @@ module.exports = {
 	},
 	getAStory: async (req, res) => {
 		const { id } = req.params;
-		console.log("this is the id", id);
 		const story = await stories.getDocument(id);
 		res.json(story);
+	},
+	createStory: async (req, res) => {
+		try {
+			console.log("This is the issue", req);
+			const result = await stories.createDocument(req.body);
+			console.log(result);
+			res.json(result);
+		} catch (err) {
+			console.log("Error in Creating: ", err);
+		}
 	},
 };

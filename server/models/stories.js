@@ -1,3 +1,4 @@
+const { ID } = require("node-appwrite");
 const { databases, users } = require("../config/appwrite");
 
 // The logic of the database data retrieval is moved to the model
@@ -40,6 +41,7 @@ module.exports = {
 			const result = await databases.createDocument(
 				process.env.VITE_DATABASE_ID,
 				process.env.VITE_COLLECTION_ID,
+				ID.unique(),
 				data
 			);
 			return result;

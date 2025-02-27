@@ -4,5 +4,6 @@ const storiesController = require("../controllers/stories");
 
 router.get("/", storiesController.getStories);
 router.get("/:id", storiesController.getAStory);
+router.post("/addStory", storiesController.createStory);
 
 module.exports = router;
