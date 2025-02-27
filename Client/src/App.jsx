@@ -4,6 +4,7 @@ import Story from "./pages/Story";
 import { UserProvider } from "./lib/context/user";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddStory from "./pages/AddStory";
 
 function App() {
 	const isLoginPage = window.location.pathname === "/login";
@@ -18,6 +19,7 @@ function App() {
 							<Route path="/" element={<Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/story/:id" element={<Story />} />
+							<Route path="/addStory" element={<AddStory />} />
 						</Routes>
 					</div>
 				</Router>

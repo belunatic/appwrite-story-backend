@@ -12,6 +12,7 @@ const Navbar = () => {
 						<>
 							<span>{user.current.email}</span>
 							<Link to="/">Home</Link>
+							<Link to="/addStory">Add Story</Link>
 							<button type="button" onClick={() => user.logout()}>
 								Logout
 							</button>
