@@ -73,7 +73,7 @@ module.exports = {
 	},
 	deleteDocument: async (id) => {
 		try {
-			const result = await databases.updateDocument(
+			const result = await databases.deleteDocument(
 				process.env.VITE_DATABASE_ID,
 				process.env.VITE_COLLECTION_ID,
 				id

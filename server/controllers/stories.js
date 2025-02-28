@@ -44,7 +44,7 @@ module.exports = {
 	},
 	deleteStory: async (req, res) => {
 		try {
-			console.log(req.params, req.body);
+			console.log(req.params);
 			const result = await stories.deleteDocument(req.params.id);
 			console.log(result);
 			res.json(result);
