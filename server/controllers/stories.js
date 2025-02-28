@@ -32,4 +32,14 @@ module.exports = {
 			console.log("Error in Creating: ", err);
 		}
 	},
+	updateStory: async (req, res) => {
+		try {
+			console.log(req.params, req.body);
+			const result = await stories.updateDocument(req.params.id, req.body);
+			console.log(result);
+			res.json(result);
+		} catch (err) {
+			console.log("Error in Creating: ", err);
+		}
+	},
 };
