@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddStory from "./pages/AddStory";
 import EditStory from "./pages/EditStory";
 import UserStories from "./pages/UserStories";
+import NotFound from "./pages/NotFound";
 
 function App() {
 	const isLoginPage = window.location.pathname === "/login";
@@ -21,9 +22,11 @@ function App() {
 							<Route path="/" element={<Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/story/:id" element={<Story />} />
-							<Route path="/userStories" element={<UserStories />} />
+							<Route path="/userStories/:id" element={<UserStories />} />
 							<Route path="/addStory" element={<AddStory />} />
 							<Route path="/editStory/:id" element={<EditStory />} />
+							{/* Catch-all route */}
+							<Route path="*" element={<NotFound />} />
 						</Routes>
 					</div>
 				</Router>

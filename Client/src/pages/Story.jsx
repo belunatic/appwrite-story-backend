@@ -10,13 +10,13 @@ const Story = () => {
 	const [story, setStory] = useState({});
 	const [loading, setLoading] = useState(true);
 
-	// //check if user is logged in
-	// useEffect(() => {
-	// 	console.log(user.current);
-	// 	if (!user.current) {
-	// 		navigator("/login");
-	// 	}
-	// }, [user.current]);
+	//check if user is logged in
+	useEffect(() => {
+		console.log(user.current);
+		if (!user.current) {
+			navigator("/login");
+		}
+	}, [user.current]);
 
 	//get the story in accordance to the id
 	useEffect(() => {
