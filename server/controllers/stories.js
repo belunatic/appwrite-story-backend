@@ -54,7 +54,7 @@ module.exports = {
 	},
 	getUserStories: async (req, res) => {
 		const users = await stories.getAllUser();
-		const documents = await stories.getUserStories();
+		const documents = await stories.getUserStories(req.params.id);
 
 		//add an author property to each document
 		documents.documents.forEach((doc) => {

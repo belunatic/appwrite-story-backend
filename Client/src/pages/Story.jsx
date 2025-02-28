@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../lib/context/user";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 const Story = () => {
 	const user = useUser();
-	const navigator = useNavigate();
+	const navigate = useNavigate();
 	const { id } = useParams();
 	const [story, setStory] = useState({});
 	const [loading, setLoading] = useState(true);
@@ -35,6 +35,15 @@ const Story = () => {
 		}
 	};
 
+	//handleDelete
+	const handleDelete = async (id) => {
+		const response = await fetch(`http://localhost:3000/${id}`, {
+			method: "DELETE",
+		});
+		console.log(await response.json());
+		navigate("/");
+	};
+
 	return (
 		<>
 			{loading ? (
@@ -46,6 +55,14 @@ const Story = () => {
 						<p>{story.body}</p>
 						<span>- {story.author}</span>
 					</div>
+					{user.current.$id === story.userId && (
+						<>
+							<button>
+								<Link to={`/editStory/${story.$id}`}>Edit</Link>
+							</button>
+							<button onClick={() => handleDelete(story.$id)}>Delete</button>
+						</>
+					)}
 				</div>
 			)}
 		</>
