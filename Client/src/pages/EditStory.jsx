@@ -66,8 +66,7 @@ const EditStory = () => {
 
 	return (
 		<>
-			<h1>Edit me</h1>
-			{/* <StoryForm
+			<StoryForm
 				formTitle="Edit Story"
 				title={title}
 				setTitle={setTitle}
@@ -76,7 +75,7 @@ const EditStory = () => {
 				handleSubmit={handleSubmit}
 				body={body}
 				setBody={setBody}
-			/> */}
+			/>
 		</>
 	);
 };

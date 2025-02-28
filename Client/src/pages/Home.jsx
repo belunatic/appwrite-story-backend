@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 // We'll complete this component later
 export function Home() {
 	const user = useUser();
-	const navigator = useNavigate();
+	const navigate = useNavigate();
 
 	//state
 	const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ export function Home() {
 	useEffect(() => {
 		console.log(user.current);
 		if (!user.current) {
-			navigator("/login");
+			navigate("/login");
 		}
 	}, [user.current]);
 
@@ -36,6 +36,16 @@ export function Home() {
 		}
 	};
 
+	//handleDelete
+	const handleDelete = async (id) => {
+		const response = await fetch(`http://localhost:3000/${id}`, {
+			method: "DELETE",
+		});
+		console.log(await response.json());
+		setData(data.filter((story) => story.$id !== id));
+		navigate("/");
+	};
+
 	return (
 		<>
 			<h1>Home</h1>
@@ -53,6 +63,7 @@ export function Home() {
 						<button>
 							<Link to={`/editStory/${item.$id}`}>Edit</Link>
 						</button>
+						<button onClick={() => handleDelete(item.$id)}>Delete</button>
 					</div>
 				))
 			)}

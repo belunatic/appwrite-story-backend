@@ -42,4 +42,14 @@ module.exports = {
 			console.log("Error in Creating: ", err);
 		}
 	},
+	deleteStory: async (req, res) => {
+		try {
+			console.log(req.params, req.body);
+			const result = await stories.deleteDocument(req.params.id);
+			console.log(result);
+			res.json(result);
+		} catch (err) {
+			console.log("Error in Creating: ", err);
+		}
+	},
 };

@@ -6,5 +6,6 @@ router.get("/", storiesController.getStories);
 router.get("/:id", storiesController.getAStory);
 router.post("/addStory", storiesController.createStory);
 router.put("/:id", storiesController.updateStory);
+router.delete("/:id", storiesController.deleteStory);
 
 module.exports = router;

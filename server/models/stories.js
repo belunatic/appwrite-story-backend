@@ -71,4 +71,16 @@ module.exports = {
 			console.error("Error creating document:", error);
 		}
 	},
+	deleteDocument: async (id) => {
+		try {
+			const result = await databases.updateDocument(
+				process.env.VITE_DATABASE_ID,
+				process.env.VITE_COLLECTION_ID,
+				id
+			);
+			return result;
+		} catch (error) {
+			console.error("Error creating document:", error);
+		}
+	},
 };
