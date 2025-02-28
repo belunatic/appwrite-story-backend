@@ -48,7 +48,7 @@ const AddStory = () => {
 	return (
 		<>
 			<StoryForm
-				formTitle="Create A Story"
+				formTitle="Create The Story"
 				title={title}
 				setTitle={setTitle}
 				error={error}

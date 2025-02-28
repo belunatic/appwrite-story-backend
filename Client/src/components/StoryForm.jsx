@@ -34,7 +34,7 @@ StoryForm.propTypes = {
 	formTitle: PropTypes.string,
 	setTitle: PropTypes.func,
 	setBody: PropTypes.func,
-	handlesSubmit: PropTypes.func,
+	handleSubmit: PropTypes.func,
 	error: PropTypes.string,
 	setError: PropTypes.func,
 };

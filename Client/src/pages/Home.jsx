@@ -50,6 +50,9 @@ export function Home() {
 						<button>
 							<Link to={`/story/${item.$id}`}>Read more</Link>
 						</button>
+						<button>
+							<Link to={`/editStory/${item.$id}`}>Edit</Link>
+						</button>
 					</div>
 				))
 			)}
