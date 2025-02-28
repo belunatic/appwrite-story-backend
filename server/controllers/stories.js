@@ -17,11 +17,14 @@ module.exports = {
 	getAStory: async (req, res) => {
 		const { id } = req.params;
 		const story = await stories.getDocument(id);
+		console.log(story);
+		//add an author property to each document
+		const author = await stories.getAUser(story.userId);
+		story.author = author.name;
 		res.json(story);
 	},
 	createStory: async (req, res) => {
 		try {
-			console.log("This is the issue", req);
 			const result = await stories.createDocument(req.body);
 			console.log(result);
 			res.json(result);

@@ -24,6 +24,15 @@ module.exports = {
 			console.error("Error fetching user:", error);
 		}
 	},
+
+	getAUser: async (id) => {
+		try {
+			const result = await users.get(id);
+			return result;
+		} catch (error) {
+			console.error("Error fetching user:", error);
+		}
+	},
 	getDocument: async (documentId) => {
 		try {
 			const result = await databases.getDocument(
