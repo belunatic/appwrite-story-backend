@@ -22,6 +22,7 @@ const StoryForm = (props) => {
 					placeholder="So what's up?"
 					onChange={(e) => props.setBody(e.target.value)}></textarea>
 				<button>Submit</button>
+				<button onClick={props.handleCancel}>Cancel</button>
 			</form>
 		</div>
 	);
@@ -35,6 +36,7 @@ StoryForm.propTypes = {
 	setTitle: PropTypes.func,
 	setBody: PropTypes.func,
 	handleSubmit: PropTypes.func,
+	handleCancel: PropTypes.func,
 	error: PropTypes.string,
 	setError: PropTypes.func,
 };

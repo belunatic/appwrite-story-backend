@@ -64,6 +64,15 @@ const EditStory = () => {
 		}
 	};
 
+	const handleCancel = () => {
+		if (window.history.length > 1) {
+			console.log(window.history);
+			navigate(-1);
+		} else {
+			navigate("/");
+		}
+	};
+
 	return (
 		<>
 			<StoryForm
@@ -75,6 +84,7 @@ const EditStory = () => {
 				handleSubmit={handleSubmit}
 				body={body}
 				setBody={setBody}
+				handleCancel={handleCancel}
 			/>
 		</>
 	);

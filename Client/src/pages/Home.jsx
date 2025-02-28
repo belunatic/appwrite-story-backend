@@ -60,10 +60,14 @@ export function Home() {
 						<button>
 							<Link to={`/story/${item.$id}`}>Read more</Link>
 						</button>
-						<button>
-							<Link to={`/editStory/${item.$id}`}>Edit</Link>
-						</button>
-						<button onClick={() => handleDelete(item.$id)}>Delete</button>
+						{item.userId === user.current.$id && (
+							<>
+								<button>
+									<Link to={`/editStory/${item.$id}`}>Edit</Link>
+								</button>
+								<button onClick={() => handleDelete(item.$id)}>Delete</button>
+							</>
+						)}
 					</div>
 				))
 			)}
