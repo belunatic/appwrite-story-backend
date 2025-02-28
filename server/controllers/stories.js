@@ -52,4 +52,16 @@ module.exports = {
 			console.log("Error in Creating: ", err);
 		}
 	},
+	getUserStories: async (req, res) => {
+		const users = await stories.getAllUser();
+		const documents = await stories.getUserStories();
+
+		//add an author property to each document
+		documents.documents.forEach((doc) => {
+			doc.author = users.users.find((user) => user.$id === doc.userId).name;
+		});
+
+		// console.log("Documents:", documents);
+		res.json(documents);
+	},
 };

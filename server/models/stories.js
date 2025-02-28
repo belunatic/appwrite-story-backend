@@ -1,4 +1,4 @@
-const { ID } = require("node-appwrite");
+const { ID, Query } = require("node-appwrite");
 const { databases, users } = require("../config/appwrite");
 
 // The logic of the database data retrieval is moved to the model
@@ -8,7 +8,8 @@ module.exports = {
 		try {
 			const result = await databases.listDocuments(
 				process.env.VITE_DATABASE_ID, // databaseId
-				process.env.VITE_COLLECTION_ID // collectionId
+				process.env.VITE_COLLECTION_ID, // collectionId
+				[Query.orderDesc()]
 			);
 			return result;
 		} catch (error) {
@@ -81,6 +82,18 @@ module.exports = {
 			return result;
 		} catch (error) {
 			console.error("Error creating document:", error);
+		}
+	},
+	getUserStories: async (userId) => {
+		try {
+			const result = await databases.listDocuments(
+				process.env.VITE_DATABASE_ID, // databaseId
+				process.env.VITE_COLLECTION_ID, // collectionId
+				[Query.equal("userId", userId), Query.orderDesc()]
+			);
+			return result;
+		} catch (error) {
+			console.error("Error fetching documents:", error);
 		}
 	},
 };
