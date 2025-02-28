@@ -4,7 +4,7 @@ import { data, useNavigate } from "react-router-dom";
 
 const AddStory = () => {
 	const user = useUser();
-	const navigate = useNavigate;
+	const navigate = useNavigate();
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
 	const [error, setError] = useState("");
@@ -32,9 +32,12 @@ const AddStory = () => {
 						userId: user.current.$id,
 					}),
 				});
-				console.log("Submitted", data);
-				console.log("Navigation issue: ", `/story/${response.$id}`);
-				navigate(`/home`);
+				const data = await response.json();
+				setTitle("");
+				setBody("");
+				setError("");
+				//navigate to the story you created
+				navigate(`/story/${data.$id}`);
 			} catch (err) {
 				console.log(err);
 			}
@@ -58,7 +61,7 @@ const AddStory = () => {
 				<textarea
 					name="body"
 					id="body"
-					defaultValue={body}
+					value={body}
 					placeholder="So what's up?"
 					onChange={(e) => setBody(e.target.value)}></textarea>
 				<button>Submit</button>
