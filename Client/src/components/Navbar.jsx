@@ -6,14 +6,17 @@ const Navbar = () => {
 
 	return (
 		<div>
-			<nav>
+			<nav className="font-semibold flex flex-row">
 				<div>
 					{user.current ? (
 						<>
-							<span>{user.current.email}</span>
 							<Link to="/">Home</Link>
-							<Link to="/userStories">My Story</Link>
-							<Link to="/addStory">Add Story</Link>
+							<Link to="/userStories" className="mx-4">
+								My Story
+							</Link>
+							<Link to="/addStory" className="mx-4">
+								Add Story
+							</Link>
 							<button type="button" onClick={() => user.logout()}>
 								Logout
 							</button>
