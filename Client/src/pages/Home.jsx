@@ -13,7 +13,6 @@ export function Home() {
 
 	//check if user is logged in
 	useEffect(() => {
-		console.log(user.current);
 		if (!user.current) {
 			navigate("/login");
 		}
@@ -28,7 +27,7 @@ export function Home() {
 		try {
 			const response = await fetch("http://localhost:3000/");
 			const data = await response.json();
-			console.log("This is the data", data);
+			// console.log("This is the data", data);
 			setData(data.documents);
 			setLoading(false);
 		} catch (error) {
@@ -60,10 +59,10 @@ export function Home() {
 						<p className="my-4">{item.body}</p>
 						<span className="italic my-4">- {item.author}</span>
 						<div className="flex flex-row mb-3">
-							<button className="w-fit bg-blue-400 text-black p-2 rounded-sm mx-l-2">
+							<button className="w-fit bg-blue-400 text-black p-2 rounded-sm mx-2">
 								<Link to={`/story/${item.$id}`}>Read more</Link>
 							</button>
-							{item.userId === user.current.$id && (
+							{item.userId === user.current.$id ? (
 								<>
 									<button className="w-fit bg-green-500 text-black p-2 rounded-sm mx-2">
 										<Link to={`/editStory/${item.$id}`}>Edit</Link>
@@ -74,6 +73,8 @@ export function Home() {
 										Delete
 									</button>
 								</>
+							) : (
+								""
 							)}
 						</div>
 					</div>

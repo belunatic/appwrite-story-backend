@@ -17,7 +17,7 @@ export function Login() {
 	}, [user.current]);
 
 	return (
-		<section>
+		<section className="flex flex-col w-full h-screen items-center justify-center content-center">
 			<h1 className="text-2xl mb-4">Login or register</h1>
 			<p className="text-red-500">{user.errorInfo}</p>
 			<form>

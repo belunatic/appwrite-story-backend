@@ -13,6 +13,7 @@ export function useUser() {
 export function UserProvider(props) {
 	const [user, setUser] = useState(null);
 	const [errorInfo, setErrorInfo] = useState("");
+	const [loading, setLoading] = useState(true);
 
 	async function login(email, password) {
 		try {
@@ -45,6 +46,7 @@ export function UserProvider(props) {
 		try {
 			const loggedIn = await account.get();
 			setUser(loggedIn);
+			setLoading(true);
 		} catch (err) {
 			setUser(null);
 		}
@@ -56,7 +58,15 @@ export function UserProvider(props) {
 
 	return (
 		<UserContext.Provider
-			value={{ current: user, login, logout, register, errorInfo }}>
+			value={{
+				current: user,
+				login,
+				logout,
+				register,
+				errorInfo,
+				loading,
+				setLoading,
+			}}>
 			{props.children}
 		</UserContext.Provider>
 	);

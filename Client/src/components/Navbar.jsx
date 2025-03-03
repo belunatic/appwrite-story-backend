@@ -28,8 +28,11 @@ const Navbar = () => {
 							<div>
 								<button
 									type="button"
-									onClick={() => user.logout()}
-									className="bg-black p-2 rounded-sm">
+									onClick={() => {
+										user.logout();
+										user.setLoading(true);
+									}}
+									className="bg-black p-2 rounded-sm cursor-pointer">
 									Logout
 								</button>
 							</div>
