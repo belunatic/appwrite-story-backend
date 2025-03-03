@@ -49,19 +49,23 @@ const Story = () => {
 			{loading ? (
 				<p>Loading...</p>
 			) : (
-				<div>
-					<h1>{story.title}</h1>
+				<div className="flex flex-col flex-start">
+					<h1 className="font-semibold text-2xl my-4">{story.title}</h1>
 					<div>
-						<p>{story.body}</p>
-						<span>- {story.author}</span>
+						<p className="my-4">{story.body}</p>
+						<span className="italic my-4">- {story.author}</span>
 					</div>
 					{user.current.$id === story.userId && (
-						<>
-							<button>
+						<div className="flex flex-row mb-3 mt-2">
+							<button className="w-fit bg-blue-400 text-black p-2 rounded-sm mx-l-2">
 								<Link to={`/editStory/${story.$id}`}>Edit</Link>
 							</button>
-							<button onClick={() => handleDelete(story.$id)}>Delete</button>
-						</>
+							<button
+								onClick={() => handleDelete(story.$id)}
+								className="w-fit bg-red-500 text-black p-2 rounded-sm mx-2">
+								Delete
+							</button>
+						</div>
 					)}
 				</div>
 			)}

@@ -6,20 +6,33 @@ const Navbar = () => {
 
 	return (
 		<div>
-			<nav className="font-semibold flex flex-row">
-				<div>
+			<nav className="font-semibold flex flex-row text-blue-500 ">
+				<div className="flex flex-row w-full justify-between">
 					{user.current ? (
 						<>
-							<Link to="/">Home</Link>
-							<Link to="/userStories" className="mx-4">
-								My Story
-							</Link>
-							<Link to="/addStory" className="mx-4">
-								Add Story
-							</Link>
-							<button type="button" onClick={() => user.logout()}>
-								Logout
-							</button>
+							<div>
+								<Link to="/" className="hover:text-green-500 hover:underline">
+									Home
+								</Link>
+								<Link
+									to="/userStories"
+									className="mx-4 hover:text-green-500 hover:underline">
+									My Story
+								</Link>
+								<Link
+									to="/addStory"
+									className="mx-4 hover:text-green-500 hover:underline">
+									Add Story
+								</Link>
+							</div>
+							<div>
+								<button
+									type="button"
+									onClick={() => user.logout()}
+									className="bg-black p-2 rounded-sm">
+									Logout
+								</button>
+							</div>
 						</>
 					) : (
 						<Link to="/login">Login</Link>
