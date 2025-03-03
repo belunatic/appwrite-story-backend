@@ -14,7 +14,7 @@ const Story = () => {
 	useEffect(() => {
 		console.log(user.current);
 		if (!user.current) {
-			navigator("/login");
+			navigate("/login");
 		}
 	}, [user.current]);
 

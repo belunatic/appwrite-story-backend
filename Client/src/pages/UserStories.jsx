@@ -49,26 +49,31 @@ export function UserStories() {
 
 	return (
 		<>
-			<h1>{user.current.name} Stories</h1>
+			<h1 className="text-2xl">My Stories</h1>
 			{loading ? (
 				<p>Loading...</p>
 			) : (
 				data.map((item) => (
-					<div key={item.$id}>
-						<h2>{item.title}</h2>
-						<p>{item.body}</p>
-						<span>- {item.author}</span>
-						<button>
-							<Link to={`/story/${item.$id}`}>Read more</Link>
-						</button>
-						{item.userId === user.current.$id && (
-							<>
-								<button>
-									<Link to={`/editStory/${item.$id}`}>Edit</Link>
-								</button>
-								<button onClick={() => handleDelete(item.$id)}>Delete</button>
-							</>
-						)}
+					<div
+						key={item.$id}
+						className="flex flex-col flex-start border-b-2 border-green-800">
+						<h2 className="font-semibold text-2xl my-4">{item.title}</h2>
+						<p className="my-4">{item.body}</p>
+						<span className="italic my-4">- {item.author}</span>
+						<div className="flex flex-row mb-3">
+							{item.userId === user.current.$id && (
+								<>
+									<button className="w-fit bg-green-500 text-black p-2 rounded-sm mx-2">
+										<Link to={`/editStory/${item.$id}`}>Edit</Link>
+									</button>
+									<button
+										className="w-fit bg-red-500 text-black p-2 rounded-sm mx-2"
+										onClick={() => handleDelete(item.$id)}>
+										Delete
+									</button>
+								</>
+							)}
+						</div>
 					</div>
 				))
 			)}

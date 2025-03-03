@@ -15,7 +15,7 @@ const Navbar = () => {
 									Home
 								</Link>
 								<Link
-									to="/userStories"
+									to={`/userStories/${user.current.$id}`}
 									className="mx-4 hover:text-green-500 hover:underline">
 									My Story
 								</Link>
