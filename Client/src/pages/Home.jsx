@@ -62,7 +62,7 @@ export function Home() {
 							<button className="w-fit bg-blue-400 text-black p-2 rounded-sm mx-2">
 								<Link to={`/story/${item.$id}`}>Read more</Link>
 							</button>
-							{item.userId === user.current.$id ? (
+							{item.userId === user?.current?.$id && (
 								<>
 									<button className="w-fit bg-green-500 text-black p-2 rounded-sm mx-2">
 										<Link to={`/editStory/${item.$id}`}>Edit</Link>
@@ -73,8 +73,6 @@ export function Home() {
 										Delete
 									</button>
 								</>
-							) : (
-								""
 							)}
 						</div>
 					</div>

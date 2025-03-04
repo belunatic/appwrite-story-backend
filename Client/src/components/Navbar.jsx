@@ -8,7 +8,7 @@ const Navbar = () => {
 		<div>
 			<nav className="font-semibold flex flex-row text-blue-500 ">
 				<div className="flex flex-row w-full justify-between">
-					{user.current ? (
+					{user.current && (
 						<>
 							<div>
 								<Link to="/" className="hover:text-green-500 hover:underline">
@@ -37,8 +37,6 @@ const Navbar = () => {
 								</button>
 							</div>
 						</>
-					) : (
-						<Link to="/login">Login</Link>
 					)}
 				</div>
 			</nav>

@@ -50,7 +50,7 @@ const Story = () => {
 				<p>Loading...</p>
 			) : (
 				<div className="flex flex-col flex-start">
-					<h1 className="font-semibold text-2xl my-4">{story.title}</h1>
+					<h1 className="font-bold text-3xl my-4">{story.title}</h1>
 					<div>
 						<p className="my-4">{story.body}</p>
 						<span className="italic my-4">- {story.author}</span>
